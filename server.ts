@@ -137,28 +137,6 @@ app.use((req, res, next) => {
     req.url = req.url.replace('/api/index', '/api');
   }
 
-  const isViteAsset =
-    req.url.startsWith('/src') ||
-    req.url.startsWith('/node_modules') ||
-    req.url.startsWith('/@id') ||
-    req.url.startsWith('/@vite') ||
-    req.url.startsWith('/@react-refresh') ||
-    req.url.startsWith('/favicon.ico') ||
-    /\.(tsx|ts|js|jsx|css|mjs|json|png|jpg|jpeg|gif|svg|webp|woff2?|ttf|otf|eot|map)$/.test(req.url.split('?')[0]);
-
-  if (
-    !isViteAsset &&
-    !req.url.startsWith('/api') &&
-    !req.url.startsWith('/uploads') &&
-    !req.url.startsWith('/static') &&
-    !req.url.startsWith('/assets') &&
-    !req.url.startsWith('/@') &&
-    req.url !== '/' &&
-    !req.url.startsWith('/index.html')
-  ) {
-    req.url = `/api${req.url.startsWith('/') ? '' : '/'}${req.url}`;
-  }
-
   if (req.url === '/api' || req.url === '/api/') {
     req.url = '/api/health';
   }
@@ -166,6 +144,40 @@ app.use((req, res, next) => {
 });
 
 console.log('[GoDaddy Server] Initialized with GoDaddy Hosting Database & File Storage Engine');
+
+// --- GEMINI SERVER-SIDE SECURE API ENDPOINT ---
+app.post('/api/gemini', async (req, res) => {
+  try {
+    const apiKey = process.env.GEMINI_API_KEY;
+    if (!apiKey) {
+      return res.status(503).json({
+        error: 'Gemini API Key is missing on the server',
+        message: 'Please set the GEMINI_API_KEY environment variable in your hosting control panel.',
+      });
+    }
+
+    const { GoogleGenAI } = await import('@google/genai');
+    const ai = new GoogleGenAI({ apiKey });
+
+    const { prompt, model = 'gemini-2.5-flash', contents } = req.body;
+    if (!prompt && !contents) {
+      return res.status(400).json({ error: 'Prompt or contents parameter is required' });
+    }
+
+    const response = await ai.models.generateContent({
+      model: model || 'gemini-2.5-flash',
+      contents: contents || prompt,
+    });
+
+    return res.json({ success: true, text: response.text });
+  } catch (err: any) {
+    console.error('[Gemini API Server Error]', err?.message || err);
+    return res.status(500).json({
+      error: 'Failed to process Gemini request',
+      message: err?.message || 'Internal server error during AI generation',
+    });
+  }
+});
 
 // --- FILE STORAGE UPLOAD ENDPOINT ---
 app.post('/api/upload', (req, res) => {
@@ -567,19 +579,35 @@ if (!isServerless) {
       const distPath = path.join(process.cwd(), 'dist');
       if (fs.existsSync(distPath)) {
         app.use(express.static(distPath));
-        app.get('*', (req, res) => {
+        app.get('*', (req, res, next) => {
+          if (req.path.startsWith('/api') || req.path.startsWith('/uploads')) {
+            return next();
+          }
           res.sendFile(path.join(distPath, 'index.html'));
         });
+      } else {
+        console.warn('[Production Notice] dist/ folder not found. Please run `npm run build` before starting production server.');
       }
     }
 
-    const port = process.env.PORT || 3000;
-    app.listen(port, () => {
-      console.log(`[GoDaddy Server] Full-stack application running and listening on ${port}`);
+    const port = Number(process.env.PORT) || 3000;
+    const host = process.env.HOST || '0.0.0.0';
+    
+    app.listen(port, host, () => {
+      console.log(`[Production Server] Application listening on host ${host} and port ${port} (NODE_ENV=${process.env.NODE_ENV || 'development'})`);
     });
   }
+
+  process.on('uncaughtException', (err) => {
+    console.error('[Server Fatal] Uncaught Exception:', err);
+  });
+
+  process.on('unhandledRejection', (reason) => {
+    console.error('[Server Fatal] Unhandled Rejection:', reason);
+  });
+
   startStandaloneServer().catch((err) => {
-    console.error('[GoDaddy Server] Failed to start standalone server:', err);
+    console.error('[Server Fatal] Failed to start standalone server:', err);
   });
 }
 
