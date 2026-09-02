@@ -1,0 +1,63 @@
+{
+  "motorcycle_registrations": {},
+  "officer_assignments": {},
+  "verification_logs": {},
+  "system_settings": {
+    "global_config": {
+      "id": "global_config",
+      "officerName": "አበበ ደስታ (Abebe Desta)",
+      "department": "የትራፊክ ማኔጅመንትና ህግ ማስከበሪያ (Traffic Mgmt & Enforcement)",
+      "subCityOffice": "በላይ ዘለቀ ክፍለ ከተማ (Belay Zeleke)",
+      "defaultPrinter": "Zebra ZD621 Industrial PVC Card Printer",
+      "cardStockType": "CR80 Standard PVC Card (85.6 x 54 mm)",
+      "calendarSystem": "ethiopian",
+      "autoPrintQR": true,
+      "emailAlerts": true,
+      "security2FA": true,
+      "highRiskAlerts": true,
+      "systemResetEpoch": 0,
+      "lastSystemResetAt": ""
+    }
+  },
+  "system_users": {
+    "user-clerk-CLERK-209": {
+      "id": "user-clerk-CLERK-209",
+      "uid": "user-clerk-CLERK-209",
+      "badgeId": "CLERK-209",
+      "email": "clerk@addisababa.gov.et",
+      "fullName": "ሳራ ተሾመ (Sara Teshome)",
+      "role": "clerk",
+      "createdAt": "2026-09-02T12:15:22.974Z"
+    },
+    "user-admin-ADMIN-001": {
+      "id": "user-admin-ADMIN-001",
+      "uid": "user-admin-ADMIN-001",
+      "badgeId": "ADMIN-001",
+      "email": "admin@addisababa.gov.et",
+      "fullName": "ዳዊት ኃይሌ (Dawit Haile)",
+      "role": "admin",
+      "createdAt": "2026-09-02T12:15:22.975Z"
+    },
+    "user-officer-OFFICER-442": {
+      "id": "user-officer-OFFICER-442",
+      "uid": "user-officer-OFFICER-442",
+      "badgeId": "OFFICER-442",
+      "email": "officer@addisababa.gov.et",
+      "fullName": "አበበ ደስታ (Abebe Desta)",
+      "role": "officer",
+      "createdAt": "2026-09-02T12:15:22.975Z"
+    },
+    "user-superadmin-SUPER-ADMIN-01": {
+      "id": "user-superadmin-SUPER-ADMIN-01",
+      "uid": "user-superadmin-SUPER-ADMIN-01",
+      "badgeId": "SUPER-ADMIN-01",
+      "email": "superadmin@permit.gov.et",
+      "fullName": "ካሌብ ታደሰ (Kaleb Tadesse - Chief Super Admin)",
+      "role": "superadmin",
+      "createdAt": "2026-09-02T12:15:22.975Z"
+    }
+  },
+  "system_audit_logs": {},
+  "unregistered_reports": {},
+  "payment_receipts": {}
+}

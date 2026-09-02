@@ -1,0 +1,6 @@
+{
+  "name": "simpbma",
+  "description": "Simplified Municipal Permit & BMA Authority system with Clerk, Officer, and Admin user roles.",
+  "requestFramePermissions": ["camera"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

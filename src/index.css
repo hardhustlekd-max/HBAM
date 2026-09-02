@@ -1,0 +1,689 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Round|Material+Icons+Sharp');
+
+/* Material Symbols & Prefix Icons Display & Ligature Rules (Stops Raw Text Flash on slow connections) */
+.material-symbols-outlined,
+.material-symbols-rounded,
+.material-symbols-sharp,
+.material-icons,
+.material-icons-outlined,
+.material-icons-round,
+.material-icons-sharp,
+.prefix-icon,
+[data-icon] {
+  font-family: 'Material Symbols Outlined', 'Material Icons', 'Material Icons Outlined', sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  font-feature-settings: 'liga';
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-display: block;
+  user-select: none;
+  vertical-align: middle;
+  flex-shrink: 0;
+}
+
+html {
+  font-size: 16px; /* Base body size */
+}
+
+:root, html.light {
+  --color-primary: #0B1E48;
+  --color-primary-hover: #071330;
+  --color-primary-container: #F1F5F9;
+  --color-primary-light: #F1F5F9;
+  --color-secondary-container: #F1F5F9;
+  --color-surface: #F8F9FA;
+  --color-on-surface: #0F172A;
+  --color-on-surface-variant: #334155;
+  --color-surface-container: #F1F5F9;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #F8F9FA;
+  --color-surface-container-high: #e2e8f0;
+  --color-surface-container-highest: #cbd5e1;
+  --color-surface-bright: #ffffff;
+  --color-surface-dim: #F8F9FA;
+  --color-surface-variant: #F1F5F9;
+  --color-secondary: #475569;
+  --color-outline: #cbd5e1;
+  --color-outline-variant: #e2e8f0;
+  --color-brand-indigo: #0B1E48;
+  --color-topnav: #0B1E48;
+  --color-topnav-hover: #071330;
+  --color-topnav-dark: #050d24;
+  --color-sidebar-bg: #0B1E48;
+  --color-sidebar-hover: #071330;
+  --color-sidebar-text: #cbd5e1;
+  --color-sidebar-active-text: #ffffff;
+  color-scheme: light;
+}
+
+html.dark {
+  --color-primary: #38bdf8;
+  --color-primary-hover: #7dd3fc;
+  --color-primary-container: #1e293b;
+  --color-primary-light: #0f172a;
+  --color-secondary-container: #1e293b;
+  --color-surface: #0b0f19;
+  --color-on-surface: #f1f5f9;
+  --color-on-surface-variant: #94a3b8;
+  --color-surface-container: #1e293b;
+  --color-surface-container-lowest: #0b0f19;
+  --color-surface-container-low: #0f172a;
+  --color-surface-container-high: #334155;
+  --color-surface-container-highest: #475569;
+  --color-surface-bright: #1e293b;
+  --color-surface-dim: #0b0f19;
+  --color-surface-variant: #1e293b;
+  --color-secondary: #94a3b8;
+  --color-outline: #334155;
+  --color-outline-variant: #1e293b;
+  --color-brand-indigo: #38bdf8;
+  --color-topnav: #1e293b;
+  --color-topnav-hover: #334155;
+  --color-topnav-dark: #0f172a;
+  --color-sidebar-bg: #1a2226;
+  --color-sidebar-hover: #11181a;
+  --color-sidebar-text: #8a9ba8;
+  --color-sidebar-active-text: #ffffff;
+  color-scheme: dark;
+}
+
+@theme {
+  --color-primary: var(--color-primary);
+  --color-primary-hover: var(--color-primary-hover);
+  --color-primary-container: var(--color-primary-container);
+  --color-primary-light: var(--color-primary-light);
+  --color-secondary-container: var(--color-secondary-container);
+  --color-surface: var(--color-surface);
+  --color-on-surface: var(--color-on-surface);
+  --color-on-surface-variant: var(--color-on-surface-variant);
+  --color-surface-container: var(--color-surface-container);
+  --color-surface-container-lowest: var(--color-surface-container-lowest);
+  --color-surface-container-low: var(--color-surface-container-low);
+  --color-surface-container-high: var(--color-surface-container-high);
+  --color-surface-container-highest: var(--color-surface-container-highest);
+  --color-surface-bright: var(--color-surface-bright);
+  --color-surface-dim: var(--color-surface-dim);
+  --color-surface-variant: var(--color-surface-variant);
+  --color-secondary: var(--color-secondary);
+  --color-outline: var(--color-outline);
+  --color-outline-variant: var(--color-outline-variant);
+  --color-brand-indigo: var(--color-brand-indigo);
+  --color-topnav: var(--color-topnav);
+  --color-topnav-hover: var(--color-topnav-hover);
+  --color-topnav-dark: var(--color-topnav-dark);
+  --color-sidebar-bg: var(--color-sidebar-bg);
+  --color-sidebar-hover: var(--color-sidebar-hover);
+  --color-sidebar-text: var(--color-sidebar-text);
+  --color-sidebar-active-text: var(--color-sidebar-active-text);
+
+  /* Page & Section Palette Overrides */
+  --color-slate-50: #F8F9FA;
+  --color-slate-100: #F1F5F9;
+  --color-slate-200: #E2E8F0;
+  --color-slate-900: #0F172A;
+
+  --color-gray-50: #F8F9FA;
+  --color-gray-100: #F1F5F9;
+  --color-gray-900: #0F172A;
+
+  /* Forest Green #15803D - Success / Alert */
+  --color-emerald-400: #15803D;
+  --color-emerald-500: #15803D;
+  --color-emerald-600: #15803D;
+  --color-emerald-700: #116631;
+  --color-green-400: #15803D;
+  --color-green-500: #15803D;
+  --color-green-600: #15803D;
+  --color-green-700: #116631;
+  
+  /* Deep Red #B91C1C - Error / Alert */
+  --color-rose-400: #B91C1C;
+  --color-rose-500: #B91C1C;
+  --color-rose-600: #B91C1C;
+  --color-rose-700: #991B1B;
+  --color-red-400: #B91C1C;
+  --color-red-500: #B91C1C;
+  --color-red-600: #B91C1C;
+  --color-red-700: #991B1B;
+  
+  /* Warning - Yellow Accent */
+  --color-amber-400: #f59e0b;
+  --color-amber-500: #f59e0b;
+  --color-amber-600: #d97706;
+  --color-amber-700: #b45309;
+  --color-yellow-400: #EAB308;
+  --color-yellow-500: #EAB308;
+  --color-yellow-600: #CA8A04;
+  --color-yellow-700: #A16207;
+  
+  /* Primary Accent - Navy #0B1E48 */
+  --color-blue-400: #1e3a8a;
+  --color-blue-500: #0B1E48;
+  --color-blue-600: #071330;
+  --color-blue-700: #050d24;
+}
+
+body {
+  font-family: 'Abyssinica SIL', 'Noto Sans Ethiopic', 'Noto Serif Ethiopic', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  background-color: #F8F9FA !important;
+  color: #0F172A !important;
+  line-height: 1.5;
+  margin: 0;
+}
+
+html.light body,
+html:not(.dark) body {
+  background-color: #F8F9FA !important;
+  color: #0F172A !important;
+}
+
+/* Explicit Section Background Utility Rules for Light Theme */
+html.light .bg-surface,
+html:not(.dark) .bg-surface {
+  background-color: #F8F9FA !important;
+}
+
+html.light .bg-surface-container,
+html:not(.dark) .bg-surface-container,
+html.light .bg-slate-100,
+html:not(.dark) .bg-slate-100,
+html.light .bg-gray-100,
+html:not(.dark) .bg-gray-100 {
+  background-color: #F1F5F9 !important;
+}
+
+html.light .text-on-surface,
+html:not(.dark) .text-on-surface {
+  color: #0F172A !important;
+}
+
+.font-ethiopic {
+  font-family: 'Abyssinica SIL', 'Noto Sans Ethiopic', 'Noto Serif Ethiopic', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Global Dark Mode Comprehensive Overrides */
+html.dark,
+.dark {
+  background-color: #131314 !important;
+  color: #e3e3e3 !important;
+  color-scheme: dark;
+}
+
+html.dark body,
+.dark body {
+  background-color: #131314 !important;
+  color: #e3e3e3 !important;
+}
+
+/* Background overrides in dark mode (catching opacity modifiers like /95, /90, /80) */
+html.dark [class*="bg-surface-container-lowest"],
+.dark [class*="bg-surface-container-lowest"],
+html.dark [class*="bg-white"],
+.dark [class*="bg-white"] {
+  background-color: #0f0f11 !important;
+}
+
+html.dark [class*="bg-surface-container"],
+.dark [class*="bg-surface-container"],
+html.dark [class*="bg-slate-50"],
+.dark [class*="bg-slate-50"],
+html.dark [class*="bg-slate-100"],
+.dark [class*="bg-slate-100"],
+html.dark [class*="bg-gray-50"],
+.dark [class*="bg-gray-50"],
+html.dark [class*="bg-gray-100"],
+.dark [class*="bg-gray-100"] {
+  background-color: #1e1f20 !important;
+}
+
+html.dark [class*="bg-surface-container-high"],
+.dark [class*="bg-surface-container-high"],
+html.dark [class*="bg-surface-container-highest"],
+.dark [class*="bg-surface-container-highest"],
+html.dark [class*="bg-slate-200"],
+.dark [class*="bg-slate-200"] {
+  background-color: #2d2f31 !important;
+}
+
+html.dark [class*="bg-surface"],
+.dark [class*="bg-surface"] {
+  background-color: #131314 !important;
+}
+
+/* Navigation & Header Overrides for Dark Mode */
+html.dark header,
+.dark header,
+html.dark nav,
+.dark nav,
+html.dark aside,
+.dark aside {
+  background-color: #1e1f20 !important;
+  border-color: #3c4043 !important;
+}
+
+/* Card and Container borders in dark mode */
+html.dark [class*="border-outline-variant"],
+.dark [class*="border-outline-variant"],
+html.dark [class*="border-slate-100"],
+.dark [class*="border-slate-100"],
+html.dark [class*="border-slate-200"],
+.dark [class*="border-slate-200"],
+html.dark [class*="border-slate-300"],
+.dark [class*="border-slate-300"],
+html.dark [class*="border-gray-200"],
+.dark [class*="border-gray-200"],
+html.dark [class*="border-gray-300"],
+.dark [class*="border-gray-300"] {
+  border-color: #2d2f31 !important;
+}
+
+/* Text color overrides in dark mode */
+html.dark [class*="text-on-surface"],
+.dark [class*="text-on-surface"],
+html.dark [class*="text-slate-900"],
+.dark [class*="text-slate-900"],
+html.dark [class*="text-slate-800"],
+.dark [class*="text-slate-800"],
+html.dark [class*="text-slate-700"],
+.dark [class*="text-slate-700"],
+html.dark [class*="text-slate-950"],
+.dark [class*="text-slate-950"],
+html.dark [class*="text-gray-900"],
+.dark [class*="text-gray-900"],
+html.dark [class*="text-gray-800"],
+.dark [class*="text-gray-800"],
+html.dark [class*="text-gray-700"],
+.dark [class*="text-gray-700"],
+html.dark [class*="text-zinc-950"],
+.dark [class*="text-zinc-950"],
+html.dark [class*="text-zinc-900"],
+.dark [class*="text-zinc-900"],
+html.dark [class*="text-zinc-800"],
+.dark [class*="text-zinc-800"],
+html.dark [class*="text-zinc-700"],
+.dark [class*="text-zinc-700"],
+html.dark [class*="text-neutral-950"],
+.dark [class*="text-neutral-950"],
+html.dark [class*="text-neutral-900"],
+.dark [class*="text-neutral-900"],
+html.dark [class*="text-neutral-800"],
+.dark [class*="text-neutral-800"],
+html.dark [class*="text-neutral-700"],
+.dark [class*="text-neutral-700"],
+html.dark [class*="text-stone-950"],
+.dark [class*="text-stone-950"],
+html.dark [class*="text-stone-900"],
+.dark [class*="text-stone-900"],
+html.dark [class*="text-stone-800"],
+.dark [class*="text-stone-800"] {
+  color: #e3e3e3 !important;
+}
+
+/* Fix standard un-namespaced text-black issues in layout */
+html.dark .text-black:not(.printable-a4-document *):not(.printable-sticker *):not(.printable-id-card *),
+.dark .text-black:not(.printable-a4-document *):not(.printable-sticker *):not(.printable-id-card *) {
+  color: #ffffff !important;
+}
+
+html.dark [class*="text-secondary"],
+.dark [class*="text-secondary"],
+html.dark [class*="text-slate-600"],
+.dark [class*="text-slate-600"],
+html.dark [class*="text-slate-500"],
+.dark [class*="text-slate-500"],
+html.dark [class*="text-gray-600"],
+.dark [class*="text-gray-600"],
+html.dark [class*="text-gray-500"],
+.dark [class*="text-gray-500"],
+html.dark [class*="text-zinc-600"],
+.dark [class*="text-zinc-600"],
+html.dark [class*="text-zinc-500"],
+.dark [class*="text-zinc-500"],
+html.dark [class*="text-neutral-600"],
+.dark [class*="text-neutral-600"],
+html.dark [class*="text-neutral-500"],
+.dark [class*="text-neutral-500"] {
+  color: #c4c7c5 !important;
+}
+
+/* Input, Select, Textarea in dark mode */
+html.dark input[type="text"],
+.dark input[type="text"],
+html.dark input[type="number"],
+.dark input[type="number"],
+html.dark input[type="date"],
+.dark input[type="date"],
+html.dark input[type="search"],
+.dark input[type="search"],
+html.dark input[type="password"],
+.dark input[type="password"],
+html.dark select,
+.dark select,
+html.dark textarea,
+.dark textarea {
+  background-color: #0f0f11 !important;
+  color: #e3e3e3 !important;
+  border-color: #3c4043 !important;
+}
+
+html.dark input::placeholder,
+.dark input::placeholder,
+html.dark textarea::placeholder,
+.dark textarea::placeholder {
+  color: #666666 !important;
+}
+
+/* Light tint boxes override in dark mode */
+html.dark [class*="bg-sky-50"],
+.dark [class*="bg-sky-50"],
+html.dark [class*="bg-blue-50"],
+.dark [class*="bg-blue-50"],
+html.dark [class*="bg-sky-100"],
+.dark [class*="bg-sky-100"],
+html.dark [class*="bg-sky-200"],
+.dark [class*="bg-sky-200"],
+html.dark [class*="bg-blue-100"],
+.dark [class*="bg-blue-100"] {
+  background-color: rgba(191, 90, 242, 0.15) !important;
+  border-color: rgba(191, 90, 242, 0.3) !important;
+}
+
+html.dark [class*="text-sky-950"],
+.dark [class*="text-sky-950"],
+html.dark [class*="text-sky-900"],
+.dark [class*="text-sky-900"],
+html.dark [class*="text-sky-800"],
+.dark [class*="text-sky-800"],
+html.dark [class*="text-sky-700"],
+.dark [class*="text-sky-700"],
+html.dark [class*="text-sky-600"],
+.dark [class*="text-sky-600"],
+html.dark [class*="text-blue-950"],
+.dark [class*="text-blue-950"],
+html.dark [class*="text-blue-900"],
+.dark [class*="text-blue-900"],
+html.dark [class*="text-blue-800"],
+.dark [class*="text-blue-800"],
+html.dark [class*="text-blue-700"],
+.dark [class*="text-blue-700"],
+html.dark [class*="text-blue-600"],
+.dark [class*="text-blue-600"] {
+  color: #da8eff !important;
+}
+
+html.dark [class*="text-sky-400"],
+.dark [class*="text-sky-400"],
+html.dark [class*="text-sky-300"],
+.dark [class*="text-sky-300"],
+html.dark [class*="text-blue-400"],
+.dark [class*="text-blue-400"],
+html.dark [class*="text-blue-300"],
+.dark [class*="text-blue-300"] {
+  color: #e8d5ff !important;
+}
+
+html.dark [class*="bg-emerald-50"],
+.dark [class*="bg-emerald-50"],
+html.dark [class*="bg-green-50"],
+.dark [class*="bg-green-50"] {
+  background-color: rgba(16, 185, 129, 0.15) !important;
+  border-color: rgba(16, 185, 129, 0.3) !important;
+}
+
+html.dark [class*="text-emerald-900"],
+.dark [class*="text-emerald-900"],
+html.dark [class*="text-emerald-950"],
+.dark [class*="text-emerald-950"],
+html.dark [class*="text-green-900"],
+.dark [class*="text-green-900"] {
+  color: #10b981 !important;
+}
+
+html.dark [class*="bg-amber-50"],
+.dark [class*="bg-amber-50"],
+html.dark [class*="bg-yellow-50"],
+.dark [class*="bg-yellow-50"] {
+  background-color: rgba(245, 158, 11, 0.15) !important;
+  border-color: rgba(245, 158, 11, 0.3) !important;
+}
+
+html.dark [class*="text-amber-900"],
+.dark [class*="text-amber-900"],
+html.dark [class*="text-amber-950"],
+.dark [class*="text-amber-950"] {
+  color: #f59e0b !important;
+}
+
+html.dark [class*="bg-rose-50"],
+.dark [class*="bg-rose-50"],
+html.dark [class*="bg-red-50"],
+.dark [class*="bg-red-50"] {
+  background-color: rgba(239, 68, 68, 0.15) !important;
+  border-color: rgba(239, 68, 68, 0.3) !important;
+}
+
+html.dark [class*="text-rose-900"],
+.dark [class*="text-rose-900"],
+html.dark [class*="text-rose-950"],
+.dark [class*="text-rose-950"],
+html.dark [class*="text-red-900"],
+.dark [class*="text-red-900"] {
+  color: #ef4444 !important;
+}
+
+html.dark [class*="bg-purple-50"],
+.dark [class*="bg-purple-50"],
+html.dark [class*="bg-indigo-50"],
+.dark [class*="bg-indigo-50"] {
+  background-color: rgba(139, 92, 246, 0.15) !important;
+  border-color: rgba(139, 92, 246, 0.3) !important;
+}
+
+html.dark [class*="text-purple-900"],
+.dark [class*="text-purple-900"],
+html.dark [class*="text-indigo-900"],
+.dark [class*="text-indigo-900"] {
+  color: #8b5cf6 !important;
+}
+
+/* Modals & Dialog overlays */
+html.dark [class*="bg-black/50"],
+.dark [class*="bg-black/50"],
+html.dark [class*="bg-slate-900/60"],
+.dark [class*="bg-slate-900/60"] {
+  background-color: rgba(0, 0, 0, 0.85) !important;
+}
+
+/* Tables in Dark Mode */
+html.dark tr:hover,
+.dark tr:hover {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+html.dark th,
+.dark th {
+  background-color: #0a0a0a !important;
+  color: #888888 !important;
+  border-color: #1f1f1f !important;
+}
+
+html.dark td,
+.dark td {
+  border-color: #1f1f1f !important;
+}
+
+/* Ensure printable ID cards and A4 documents retain clean light appearance for official scanning */
+html.dark .printable-id-card,
+.dark .printable-id-card {
+  background-color: #e4f2f7 !important;
+  color: #1e293b !important;
+}
+
+html.dark .printable-a4-document,
+.dark .printable-a4-document,
+html.dark .printable-a4-document *,
+.dark .printable-a4-document * {
+  color: #0f172a !important;
+}
+
+html.dark .printable-a4-document,
+.dark .printable-a4-document {
+  background-color: #ffffff !important;
+}
+
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 0;
+  }
+
+  html, body {
+    background-color: #ffffff !important;
+    color: #0f172a !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    overflow: visible !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  /* Reset all modal backdrops, dialog wrappers, and outer scrollable overlays during print */
+  body[data-print-target] .fixed,
+  body[data-print-target] .absolute,
+  body[data-print-target] .relative,
+  body[data-print-target] [class*="bg-black"],
+  body[data-print-target] [class*="bg-slate-950"],
+  body[data-print-target] [class*="backdrop-blur"] {
+    position: static !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    background-color: transparent !important;
+    backdrop-filter: none !important;
+    box-shadow: none !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: auto !important;
+    height: auto !important;
+  }
+
+  body[data-print-target] #root > :not(main),
+  body[data-print-target] #root > main > :not(.printable-a4-document):not(.printable-id-card) {
+    display: none !important;
+  }
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.zoom-container {
+  transform-origin: top left;
+  transition: transform 0.2s ease-out;
+}
+
+@keyframes scanBeam {
+  0% {
+    transform: translateY(0);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translateY(220px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 0.3;
+  }
+}
+
+.animate-scan-beam {
+  animation: scanBeam 2.4s ease-in-out infinite;
+}
+
+@keyframes whiteLaser {
+  0% {
+    top: 6%;
+    opacity: 0.7;
+  }
+  50% {
+    top: 92%;
+    opacity: 1;
+  }
+  100% {
+    top: 6%;
+    opacity: 0.7;
+  }
+}
+
+.animate-white-laser {
+  animation: whiteLaser 2.2s ease-in-out infinite;
+}
+
+@keyframes redLaser {
+  0% {
+    top: 5%;
+    opacity: 0.8;
+  }
+  50% {
+    top: 92%;
+    opacity: 1;
+  }
+  100% {
+    top: 5%;
+    opacity: 0.8;
+  }
+}
+
+.animate-red-laser {
+  animation: redLaser 2.2s ease-in-out infinite;
+}
+
+/* Global Dropdown Arrow Fix */
+select {
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  appearance: none !important;
+  background-image: none !important;
+}
+
+/* Prevent default browser input black borders */
+input:focus {
+  outline: none;
+}
+
+.border-none,
+input.border-none,
+input[type="tel"].border-none {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
